@@ -1,0 +1,31 @@
+pipeline{
+    agent any
+    stages{
+        stage('build'){
+            steps{
+              echo 'build app'
+            }
+        }
+     stage('test'){
+            steps{
+              echo 'test app'
+            }
+        }
+      stage('deploy'){
+            steps{
+              echo 'deploy app'
+            }
+        }
+    }    
+    post    
+    {
+       always
+       {
+         emailext body: 'build status', subject: 'pipeline status', to: 'bose.azure29@gmail.com'
+       }
+        
+        
+        
+        
+    }
+}    
